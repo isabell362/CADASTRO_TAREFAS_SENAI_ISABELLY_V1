@@ -1,158 +1,507 @@
-/* variaveis css - facilitar o uso de temas para formatação */
-:root{
-    --gradient-fundo:linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+/* =========================================
+   VARIÁVEIS
+========================================= */
+
+:root {
+    --gradiente-fundo: linear-gradient(
+        135deg,
+        #a8edea 0%,
+        #fed6e3 100%
+    );
+
     --fundo-cartao: #ffffff;
+
     --cor-texto: #2d3748;
-    --cor-primairio: #6c5ce7;
+
+    --cor-primaria: #6c5ce7;
+
     --cor-primaria-destaque: #5d4bc4;
+
     --cor-borda: #edf2f7;
-    --cor-perigo: #ff7675;
-    --cor-concluido: #a0aec0;
-}
-/* Modo escuro */
-body.modo-escuro{
-    --gradient-fundo: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-    --fundo-cartao: #1a202c;
-    --cor-texto: #f7fafc;
-    --cor-borda: #4a5568;
-}
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background 0.3s, color 0.3s;
+
+    /* Cor dos quadros no modo claro */
+    --fundo-tarefa: #b8c1ce;
+
+    /* Barra de rolagem */
+    --fundo-barra: #eeeeee;
+
+    --cor-barra: #b5b5b5;
 }
 
-body{
-    background: var(--gradient-fundo);
+
+/* =========================================
+   MODO ESCURO
+========================================= */
+
+body.modo-escuro {
+    --gradiente-fundo: linear-gradient(
+        135deg,
+        #2d3748 0%,
+        #1a202c 100%
+    );
+
+    --fundo-cartao: #1a202c;
+
+    --cor-texto: #f7fafc;
+
+    --cor-borda: #4a5568;
+
+    /* Quadros mais escuros */
+    --fundo-tarefa: #4a5568;
+
+    /* Barra no modo escuro */
+    --fundo-barra: #2d3748;
+
+    --cor-barra: #718096;
+}
+
+
+/* =========================================
+   CONFIGURAÇÕES GERAIS
+========================================= */
+
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family:
+        'Segoe UI',
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+
+    transition:
+        background 0.3s,
+        color 0.3s,
+        border-color 0.3s,
+        transform 0.2s;
+}
+
+
+/* =========================================
+   CORPO
+========================================= */
+
+body {
+    background: var(--gradiente-fundo);
+
     min-height: 100vh;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     padding: 20px;
 }
 
-.cartao-aplicacao{
+
+/* =========================================
+   CARTÃO PRINCIPAL
+========================================= */
+
+.cartao-aplicacao {
     background: var(--fundo-cartao);
+
     color: var(--cor-texto);
+
+    width: 100%;
+
     max-width: 420px;
+
     border-radius: 20px;
+
     padding: 30px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
-.cabecalho-aplicacao{
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.cabecalho-aplicacao {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     margin-bottom: 25px;
 }
-.cabecalho-aplicacao h1{
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.cabecalho-aplicacao h1 {
     font-size: 1.5rem;
+
     font-weight: 700;
-}
 
-.botao-icone{
-    background: transparent;
-    border: none;
-    font-size: 1.2rem;
     color: var(--cor-texto);
-    cursor: pointer;
 }
 
-.caixa-entrada{
+
+/* =========================================
+   BOTÃO LUA / SOL
+========================================= */
+
+.botao-icone {
+    background: transparent;
+
+    border: none;
+
+    color: var(--cor-texto);
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    padding: 5px;
+}
+
+.botao-icone:hover {
+    transform: scale(1.15);
+}
+
+
+/* =========================================
+   ÁREA DE ENTRADA
+========================================= */
+
+.caixa-entrada {
     display: flex;
+
     gap: 10px;
-    margin-bottom: 20px;
+
+    margin-bottom: 18px;
+
+    width: 100%;
 }
 
-input[type="text"]{
+
+/* =========================================
+   CAMPO DE TEXTO
+========================================= */
+
+input[type="text"] {
     flex: 1;
-    padding: 12px 15px;
+
+    min-width: 0;
+
+    padding: 11px 14px;
+
     border: 2px solid var(--cor-borda);
+
     border-radius: 12px;
+
     outline: none;
+
     font-size: 0.95rem;
+
     background: transparent;
+
     color: var(--cor-texto);
 }
 
-input[type="text"]:focus{
-    border-color: var(--cor-primairio);
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+input[type="text"]::placeholder {
+    color: #a0aec0;
 }
 
-.botao-principal{
-    background: var(--cor-primairio);
+
+/* =========================================
+   CAMPO SELECIONADO
+========================================= */
+
+input[type="text"]:focus {
+    border-color: var(--cor-primaria);
+}
+
+
+/* =========================================
+   BOTÃO ADICIONAR
+========================================= */
+
+.botao-principal {
+    background: var(--cor-primaria);
+
     color: white;
+
     border: none;
-    padding: 12px 18px;
+
+    padding: 11px 14px;
+
     border-radius: 12px;
+
     font-weight: 600;
+
     cursor: pointer;
-    transition: transform 0.1s, background 0.2s;
-}
 
-.botao-principal:hover{
-    background: var(--cor-primaria-destaque);
-    transform: translateY(2px);
-}
+    white-space: nowrap;
 
-.lista-tarefa{
-    list-style: none;
-    max-width: 280px;
-    overflow-y: auto;
-}
-
-.item-tarefa{
     display: flex;
+
     align-items: center;
-    justify-content: space-between;
-    padding: 12px;
-    background: var(--cor-borda);
-    border-radius: 10px;
-    margin-bottom: 10px;
-    animation: aparecer 0.3s ease;
+
+    justify-content: center;
+
+    gap: 6px;
 }
 
-.item-tarefa.concluido span{
-    text-decoration: line-through;
-    color: var(--cor-concluido);
+
+/* =========================================
+   HOVER BOTÃO ADICIONAR
+========================================= */
+
+.botao-principal:hover {
+    background: var(--cor-primaria-destaque);
+
+    transform: translateY(-2px);
 }
 
-.item-tarefa.concluido span{
-    text-decoration: line-through;
-    color: var(--cor-concluido);
+
+/* =========================================
+   CLIQUE BOTÃO ADICIONAR
+========================================= */
+
+.botao-principal:active {
+    transform: translateY(0);
 }
 
-.acoes-tarefa{
+
+/* =========================================
+   LISTA DE TAREFAS
+========================================= */
+
+.lista-tarefas {
+    list-style: none;
+
+    /*
+       Aproximadamente 5 tarefas ficam
+       visíveis antes da rolagem.
+    */
+    max-height: 270px;
+
+    /*
+       A barra aparece somente quando
+       houver conteúdo maior que a área.
+    */
+    overflow-y: auto;
+
+    margin: 0 0 12px 0;
+
+    padding: 0 6px 0 0;
+}
+
+
+/* =========================================
+   QUADRO DA TAREFA
+========================================= */
+
+.item-tarefa {
     display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
     gap: 8px;
+
+    background: var(--fundo-tarefa);
+
+    color: white;
+
+    padding: 11px 13px;
+
+    margin-bottom: 6px;
+
+    border-radius: 12px;
+
+    font-weight: 600;
+
+    min-height: 45px;
 }
 
-.botao-acao{
-    background: none;
+
+/* =========================================
+   TEXTO DA TAREFA
+========================================= */
+
+.texto-tarefa {
+    flex: 1;
+
+    word-break: break-word;
+}
+
+
+/* =========================================
+   ÁREA DOS BOTÕES
+========================================= */
+
+.acoes-tarefa {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+/* =========================================
+   BOTÕES DAS TAREFAS
+========================================= */
+
+.acoes-tarefa button {
+    background: transparent;
+
     border: none;
+
+    color: white;
+
+    font-size: 17px;
+
     cursor: pointer;
-    font-size: 1rem;
-    color: var(--cor-texto);
+
+    padding: 2px;
 }
 
-.botao-acao.excluir:hover{
-    color: var(--cor-perigo);
+
+/* =========================================
+   BOTÃO VERIFICAR
+========================================= */
+
+.botao-verificar {
+    color: white;
 }
-.rodape-aplicacao{
-    margin-top: 15px;
-    font-size: 0.85rem;
-    color: var(--cor-concluido);
+
+
+/* =========================================
+   LIXEIRA NORMAL
+========================================= */
+
+.botao-excluir {
+    color: white;
+}
+
+
+/* =========================================
+   LIXEIRA AO PASSAR O MOUSE
+========================================= */
+
+.botao-excluir:hover {
+    color: #ff4d4d;
+
+    transform: scale(1.12);
+}
+
+
+/* =========================================
+   TAREFA CONCLUÍDA
+========================================= */
+
+.item-tarefa.concluida .texto-tarefa {
+    text-decoration: line-through;
+
+    opacity: 0.65;
+}
+
+
+/* =========================================
+   CONTADOR
+========================================= */
+
+.rodape-aplicacao {
     text-align: center;
+
+    margin-top: 4px;
+
+    color: var(--cor-texto);
+
+    font-size: 0.95rem;
+
+    font-weight: 500;
 }
 
-@keyframes aparecer {
-    from{
-        opacity: 0; transform: translateY(10px);
+
+/* =========================================
+   BARRA DE ROLAGEM
+========================================= */
+
+.lista-tarefas::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Fundo da barra */
+
+.lista-tarefas::-webkit-scrollbar-track {
+    background: var(--fundo-barra);
+
+    border-radius: 8px;
+}
+
+
+/* Parte que pode ser arrastada */
+
+.lista-tarefas::-webkit-scrollbar-thumb {
+    background: var(--cor-barra);
+
+    border-radius: 8px;
+
+    border: 2px solid var(--fundo-barra);
+}
+
+
+/* =========================================
+   HOVER DA BARRA
+========================================= */
+
+.lista-tarefas::-webkit-scrollbar-thumb:hover {
+    background: #999999;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
     }
-    to{
-        opacity: 1; transform: translateY(0);
+
+
+    .cartao-aplicacao {
+        padding: 22px;
+    }
+
+
+    .caixa-entrada {
+        gap: 7px;
+    }
+
+
+    .botao-principal {
+        padding: 11px 10px;
+    }
+
+
+    .cabecalho-aplicacao h1 {
+        font-size: 1.3rem;
     }
 }

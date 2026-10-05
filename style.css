@@ -1,95 +1,57 @@
-/* =========================================
-   VARIÁVEIS
-========================================= */
-
-:root {
-    --gradiente-fundo: linear-gradient(
-        135deg,
-        #a8edea 0%,
-        #fed6e3 100%
-    );
-
-    --fundo-cartao: #ffffff;
-
-    --cor-texto: #2d3748;
-
-    --cor-primaria: #6c5ce7;
-
-    --cor-primaria-destaque: #5d4bc4;
-
-    --cor-borda: #edf2f7;
-
-    /* Cor dos quadros no modo claro */
-    --fundo-tarefa: #b8c1ce;
-
-    /* Barra de rolagem */
-    --fundo-barra: #eeeeee;
-
-    --cor-barra: #b5b5b5;
-}
-
-
-/* =========================================
-   MODO ESCURO
-========================================= */
-
-body.modo-escuro {
-    --gradiente-fundo: linear-gradient(
-        135deg,
-        #2d3748 0%,
-        #1a202c 100%
-    );
-
-    --fundo-cartao: #1a202c;
-
-    --cor-texto: #f7fafc;
-
-    --cor-borda: #4a5568;
-
-    /* Quadros mais escuros */
-    --fundo-tarefa: #4a5568;
-
-    /* Barra no modo escuro */
-    --fundo-barra: #2d3748;
-
-    --cor-barra: #718096;
-}
-
-
-/* =========================================
-   CONFIGURAÇÕES GERAIS
-========================================= */
+/* ========================================= */
+/* CONFIGURAÇÕES GERAIS */
+/* ========================================= */
 
 * {
-    box-sizing: border-box;
-
     margin: 0;
-
     padding: 0;
-
-    font-family:
-        'Segoe UI',
-        Tahoma,
-        Geneva,
-        Verdana,
-        sans-serif;
-
-    transition:
-        background 0.3s,
-        color 0.3s,
-        border-color 0.3s,
-        transform 0.2s;
+    box-sizing: border-box;
 }
 
 
-/* =========================================
-   CORPO
-========================================= */
+/* ========================================= */
+/* CORES */
+/* ========================================= */
+
+:root {
+
+    --cor-principal: #6eaec5;
+
+    --cor-principal-hover: #5795ad;
+
+    --cor-texto: #405d70;
+
+    --cor-texto-secundario: #718795;
+
+    --fundo-cartao: rgba(255, 255, 255, 0.91);
+
+    --fundo-input: rgba(255, 255, 255, 0.94);
+
+    --cor-borda: #bfd7e2;
+
+    --cor-concluida: #8ca5b2;
+
+    --cor-excluir: #d96b73;
+
+    --imagem-praia: url("praia-dia.jpg");
+}
+
+
+
+/* ========================================= */
+/* BODY */
+/* ========================================= */
 
 body {
-    background: var(--gradiente-fundo);
 
     min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: var(--cor-texto);
 
     display: flex;
 
@@ -97,161 +59,566 @@ body {
 
     align-items: center;
 
-    padding: 20px;
+    padding: 30px 20px;
+
+    position: relative;
+
+    overflow-x: hidden;
+
+    background: #dceff5;
 }
 
 
-/* =========================================
-   CARTÃO PRINCIPAL
-========================================= */
+
+/* ========================================= */
+/* IMAGEM DE FUNDO */
+/* ========================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background-image:
+        var(--imagem-praia);
+
+    background-size: cover;
+
+    background-position: center;
+
+    z-index: -2;
+}
+
+
+
+/* ========================================= */
+/* CAMADA SOBRE A IMAGEM */
+/* ========================================= */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(225, 244, 249, 0.36);
+
+    z-index: -1;
+}
+
+
+
+/* ========================================= */
+/* MODO ESCURO */
+/* ========================================= */
+
+body.modo-escuro {
+
+    --cor-principal: #72abc2;
+
+    --cor-principal-hover: #6098b0;
+
+    --cor-texto: #eef6f8;
+
+    --cor-texto-secundario: #c0d0d7;
+
+    --fundo-cartao: rgba(29, 43, 52, 0.94);
+
+    --fundo-input: rgba(27, 40, 50, 0.96);
+
+    --cor-borda: #526d7a;
+
+    --cor-concluida: #7d98a4;
+
+    --imagem-praia:
+        url("praia-noite.jpg");
+}
+
+
+body.modo-escuro::after {
+
+    background:
+        rgba(10, 24, 32, 0.52);
+}
+
+
+
+/* ========================================= */
+/* CARD PRINCIPAL */
+/* ========================================= */
 
 .cartao-aplicacao {
-    background: var(--fundo-cartao);
 
-    color: var(--cor-texto);
+    position: relative;
+
+    z-index: 1;
 
     width: 100%;
 
-    max-width: 420px;
+    max-width: 1050px;
 
-    border-radius: 20px;
+    margin: auto;
 
-    padding: 30px;
+    padding: 35px;
+
+    border-radius: 28px;
+
+    background:
+        var(--fundo-cartao);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.75);
 
     box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.15);
+        0 18px 45px
+        rgba(30, 70, 90, 0.24);
 }
 
 
-/* =========================================
-   CABEÇALHO
-========================================= */
+
+/* ========================================= */
+/* CABEÇALHO */
+/* ========================================= */
 
 .cabecalho-aplicacao {
+
+    position: relative;
+
     display: flex;
 
-    justify-content: space-between;
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 90px;
+
+    margin-bottom: 28px;
+}
+
+
+
+/* ========================================= */
+/* FOTO + TÍTULO */
+/* ========================================= */
+
+.titulo-com-foto {
+
+    display: flex;
 
     align-items: center;
+
+    justify-content: center;
+
+    gap: 16px;
+}
+
+
+
+/* ========================================= */
+/* MOLDURA DA FOTO */
+/* ========================================= */
+
+.moldura-foto {
+
+    width: 88px;
+
+    height: 88px;
+
+    padding: 4px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #d9f2f7,
+            #a8d5e4
+        );
+
+    border:
+        2px solid white;
+
+    box-shadow:
+        0 6px 16px
+        rgba(50, 100, 120, 0.25);
+
+    flex-shrink: 0;
+}
+
+
+
+/* ========================================= */
+/* FOTO */
+/* ========================================= */
+
+.foto-perolas {
+
+    width: 78px;
+
+    height: 78px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    border:
+        2px solid #f3dfb8;
+
+    display: block;
+}
+
+
+
+/* ========================================= */
+/* TÍTULO */
+/* ========================================= */
+
+.cabecalho-aplicacao h1 {
+
+    margin: 0;
+
+    color:
+        #55788c;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    text-align: center;
+}
+
+
+
+body.modo-escuro
+.cabecalho-aplicacao h1 {
+
+    color:
+        #dceff4;
+}
+
+
+
+/* ========================================= */
+/* BOTÃO DE TEMA */
+/* ========================================= */
+
+.botao-icone {
+
+    position: absolute;
+
+    right: 0;
+
+    width: 48px;
+
+    height: 48px;
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.85);
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #75b9d0,
+            #568eaa
+        );
+
+    color:
+        #fff4d6;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 5px 13px
+        rgba(50, 100, 120, 0.23);
+
+    transition:
+        0.2s;
+}
+
+
+.botao-icone:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #64aac2,
+            #4e829e
+        );
+
+    transform:
+        scale(1.06);
+}
+
+
+
+/* ========================================= */
+/* ÁREA DE ENTRADA */
+/* ========================================= */
+
+.caixa-entrada {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(300px, 1fr)
+        240px
+        150px;
+
+    gap: 18px;
+
+    align-items: end;
 
     margin-bottom: 25px;
 }
 
 
-/* =========================================
-   TÍTULO
-========================================= */
 
-.cabecalho-aplicacao h1 {
-    font-size: 1.5rem;
+/* ========================================= */
+/* CAMPO DA TAREFA */
+/* ========================================= */
 
-    font-weight: 700;
-
-    color: var(--cor-texto);
-}
-
-
-/* =========================================
-   BOTÃO LUA / SOL
-========================================= */
-
-.botao-icone {
-    background: transparent;
-
-    border: none;
-
-    color: var(--cor-texto);
-
-    font-size: 1.4rem;
-
-    cursor: pointer;
-
-    padding: 5px;
-}
-
-.botao-icone:hover {
-    transform: scale(1.15);
-}
-
-
-/* =========================================
-   ÁREA DE ENTRADA
-========================================= */
-
-.caixa-entrada {
-    display: flex;
-
-    gap: 10px;
-
-    margin-bottom: 18px;
+#campo-tarefa {
 
     width: 100%;
-}
 
+    height: 76px;
 
-/* =========================================
-   CAMPO DE TEXTO
-========================================= */
+    padding:
+        0 18px;
 
-input[type="text"] {
-    flex: 1;
+    border:
+        2px solid
+        var(--cor-borda);
 
-    min-width: 0;
-
-    padding: 11px 14px;
-
-    border: 2px solid var(--cor-borda);
-
-    border-radius: 12px;
+    border-radius: 16px;
 
     outline: none;
 
-    font-size: 0.95rem;
+    background:
+        var(--fundo-input);
 
-    background: transparent;
+    color:
+        var(--cor-texto);
 
-    color: var(--cor-texto);
+    font-size: 15px;
+
+    transition:
+        0.2s;
 }
 
 
-/* =========================================
-   PLACEHOLDER
-========================================= */
+#campo-tarefa::placeholder {
 
-input[type="text"]::placeholder {
-    color: #a0aec0;
+    color:
+        var(--cor-texto-secundario);
 }
 
 
-/* =========================================
-   CAMPO SELECIONADO
-========================================= */
+#campo-tarefa:focus {
 
-input[type="text"]:focus {
-    border-color: var(--cor-primaria);
+    border-color:
+        var(--cor-principal);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(110, 174, 197, 0.15);
 }
 
 
-/* =========================================
-   BOTÃO ADICIONAR
-========================================= */
 
-.botao-principal {
-    background: var(--cor-primaria);
+/* ========================================= */
+/* CAMPO DE HUMOR */
+/* ========================================= */
 
-    color: white;
+.campo-humor {
+
+    width: 100%;
+
+    height: 76px;
+
+    padding:
+        6px 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    background:
+        var(--fundo-input);
+
+    border:
+        2px solid
+        var(--cor-borda);
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    transition:
+        0.2s;
+}
+
+
+.campo-humor:focus-within {
+
+    border-color:
+        var(--cor-principal);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(110, 174, 197, 0.15);
+}
+
+
+
+/* ========================================= */
+/* "COMO VOCÊ ESTÁ?" */
+/* ========================================= */
+
+.quadrinho-como-esta {
+
+    width: 100%;
+
+    padding:
+        3px 5px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    color:
+        var(--cor-texto);
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+
+/* ========================================= */
+/* SELECT */
+/* ========================================= */
+
+#humor-tarefa {
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 32px;
+
+    padding:
+        0 20px 0 5px;
 
     border: none;
 
-    padding: 11px 14px;
+    outline: none;
 
-    border-radius: 12px;
+    background:
+        transparent;
+
+    color:
+        var(--cor-texto);
+
+    font-family: inherit;
+
+    font-size: 14px;
 
     font-weight: 600;
 
     cursor: pointer;
 
-    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+
+/* OPÇÕES */
+
+#humor-tarefa option {
+
+    background:
+        white;
+
+    color:
+        #405d70;
+
+    font-size: 14px;
+}
+
+
+body.modo-escuro
+#humor-tarefa option {
+
+    background:
+        #1d2b34;
+
+    color:
+        #eef6f8;
+}
+
+
+
+/* ========================================= */
+/* BOTÃO ADICIONAR */
+/* ========================================= */
+
+.botao-principal {
+
+    height: 76px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #72b9d1,
+            #568fae
+        );
+
+    color:
+        white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
 
     display: flex;
 
@@ -259,249 +626,630 @@ input[type="text"]:focus {
 
     justify-content: center;
 
-    gap: 6px;
+    gap: 9px;
+
+    box-shadow:
+        0 6px 14px
+        rgba(65, 120, 145, 0.20);
+
+    transition:
+        0.2s;
 }
 
-
-/* =========================================
-   HOVER BOTÃO ADICIONAR
-========================================= */
 
 .botao-principal:hover {
-    background: var(--cor-primaria-destaque);
 
-    transform: translateY(-2px);
+    background:
+        linear-gradient(
+            135deg,
+            #61a9c3,
+            #4d829f
+        );
+
+    transform:
+        translateY(-2px);
 }
 
-
-/* =========================================
-   CLIQUE BOTÃO ADICIONAR
-========================================= */
 
 .botao-principal:active {
-    transform: translateY(0);
+
+    transform:
+        translateY(0);
 }
 
 
-/* =========================================
-   LISTA DE TAREFAS
-========================================= */
+
+/* ========================================= */
+/* PAINEL DA MARÉ */
+/* ========================================= */
+
+.painel-mare {
+
+    width: 100%;
+
+    padding:
+        18px 20px;
+
+    margin-bottom: 22px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(220, 240, 248, 0.75);
+
+    border:
+        1px solid
+        var(--cor-borda);
+}
+
+
+body.modo-escuro
+.painel-mare {
+
+    background:
+        rgba(43, 61, 72, 0.72);
+}
+
+
+
+/* ========================================= */
+/* TÍTULO DA MARÉ */
+/* ========================================= */
+
+.titulo-mare {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+#numero-pendentes {
+
+    color:
+        #558ca4;
+}
+
+
+
+/* ========================================= */
+/* BARRA DA MARÉ */
+/* ========================================= */
+
+.barra-mare {
+
+    width: 100%;
+
+    height: 10px;
+
+    background:
+        rgba(150, 180, 195, 0.35);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.progresso-mare {
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8dccdf,
+            #5e9fbd
+        );
+
+    border-radius: 20px;
+
+    transition:
+        width 0.3s ease;
+}
+
+
+
+/* ========================================= */
+/* MENSAGEM DA MARÉ */
+/* ========================================= */
+
+.mensagem-mare {
+
+    margin-top: 10px;
+
+    color:
+        var(--cor-texto-secundario);
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+
+/* ========================================= */
+/* LISTA DE TAREFAS */
+/* ========================================= */
 
 .lista-tarefas {
+
     list-style: none;
 
-    /*
-       Aproximadamente 5 tarefas ficam
-       visíveis antes da rolagem.
-    */
-    max-height: 270px;
+    display: flex;
 
-    /*
-       A barra aparece somente quando
-       houver conteúdo maior que a área.
-    */
-    overflow-y: auto;
+    flex-direction: column;
 
-    margin: 0 0 12px 0;
+    gap: 10px;
 
-    padding: 0 6px 0 0;
+    width: 100%;
 }
 
 
-/* =========================================
-   QUADRO DA TAREFA
-========================================= */
+
+/* ========================================= */
+/* ITEM DA TAREFA */
+/* ========================================= */
 
 .item-tarefa {
+
+    width: 100%;
+
+    min-height: 68px;
+
+    padding:
+        12px 15px;
+
     display: flex;
 
     align-items: center;
 
     justify-content: space-between;
 
-    gap: 8px;
+    gap: 15px;
 
-    background: var(--fundo-tarefa);
+    border-radius: 15px;
 
-    color: white;
+    background:
+        rgba(239, 248, 252, 0.92);
 
-    padding: 11px 13px;
+    border:
+        1px solid
+        #c9dce7;
 
-    margin-bottom: 6px;
-
-    border-radius: 12px;
-
-    font-weight: 600;
-
-    min-height: 45px;
+    transition:
+        0.2s;
 }
 
 
-/* =========================================
-   TEXTO DA TAREFA
-========================================= */
+body.modo-escuro
+.item-tarefa {
+
+    background:
+        rgba(37, 53, 63, 0.94);
+
+    border-color:
+        #526d7a;
+}
+
+
+.item-tarefa:hover {
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(40, 70, 90, 0.10);
+}
+
+
+
+/* ========================================= */
+/* INFORMAÇÕES DA TAREFA */
+/* ========================================= */
+
+.informacoes-tarefa {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.emoji-tarefa {
+
+    width: 38px;
+
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.75);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 20px;
+}
+
+
+.texto-tarefa-area {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    min-width: 0;
+}
+
 
 .texto-tarefa {
-    flex: 1;
+
+    color:
+        var(--cor-texto);
+
+    font-size: 15px;
+
+    font-weight: 600;
 
     word-break: break-word;
 }
 
 
-/* =========================================
-   ÁREA DOS BOTÕES
-========================================= */
+.clima-tarefa {
+
+    color:
+        var(--cor-texto-secundario);
+
+    font-size: 12px;
+}
+
+
+
+/* ========================================= */
+/* TAREFA CONCLUÍDA */
+/* ========================================= */
+
+.item-tarefa.concluida {
+
+    opacity:
+        0.75;
+}
+
+
+.item-tarefa.concluida
+.texto-tarefa {
+
+    color:
+        var(--cor-concluida);
+
+    text-decoration:
+        line-through;
+}
+
+
+
+/* ========================================= */
+/* BOTÕES DAS TAREFAS */
+/* ========================================= */
 
 .acoes-tarefa {
+
     display: flex;
 
     align-items: center;
 
     gap: 7px;
+
+    flex-shrink: 0;
 }
 
 
-/* =========================================
-   BOTÕES DAS TAREFAS
-========================================= */
+.botao-verificar,
+.botao-excluir {
 
-.acoes-tarefa button {
-    background: transparent;
+    width: 38px;
+
+    height: 38px;
 
     border: none;
 
-    color: white;
-
-    font-size: 17px;
+    border-radius: 10px;
 
     cursor: pointer;
 
-    padding: 2px;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 16px;
+
+    transition:
+        0.2s;
 }
 
 
-/* =========================================
-   BOTÃO VERIFICAR
-========================================= */
+
+/* CONCLUIR */
 
 .botao-verificar {
-    color: white;
+
+    background:
+        rgba(110, 174, 197, 0.13);
+
+    color:
+        #5795ad;
 }
 
 
-/* =========================================
-   LIXEIRA NORMAL
-========================================= */
+.botao-verificar:hover {
+
+    background:
+        #67a8c1;
+
+    color:
+        white;
+}
+
+
+
+/* EXCLUIR */
 
 .botao-excluir {
-    color: white;
+
+    background:
+        rgba(217, 107, 115, 0.10);
+
+    color:
+        var(--cor-excluir);
 }
 
-
-/* =========================================
-   LIXEIRA AO PASSAR O MOUSE
-========================================= */
 
 .botao-excluir:hover {
-    color: #ff4d4d;
 
-    transform: scale(1.12);
+    background:
+        var(--cor-excluir);
+
+    color:
+        white;
 }
 
 
-/* =========================================
-   TAREFA CONCLUÍDA
-========================================= */
 
-.item-tarefa.concluida .texto-tarefa {
-    text-decoration: line-through;
-
-    opacity: 0.65;
-}
-
-
-/* =========================================
-   CONTADOR
-========================================= */
+/* ========================================= */
+/* RODAPÉ */
+/* ========================================= */
 
 .rodape-aplicacao {
+
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid
+        var(--cor-borda);
+
     text-align: center;
 
-    margin-top: 4px;
+    color:
+        var(--cor-texto-secundario);
 
-    color: var(--cor-texto);
-
-    font-size: 0.95rem;
-
-    font-weight: 500;
+    font-size: 13px;
 }
 
 
-/* =========================================
-   BARRA DE ROLAGEM
-========================================= */
+
+/* ========================================= */
+/* ROLAGEM A PARTIR DE 6 TAREFAS */
+/* ========================================= */
+
+.lista-tarefas:has(
+    .item-tarefa:nth-child(6)
+) {
+
+    max-height: 430px;
+
+    overflow-y: auto;
+
+    padding-right: 7px;
+}
+
+
+
+/* ========================================= */
+/* BARRA DE ROLAGEM */
+/* ========================================= */
 
 .lista-tarefas::-webkit-scrollbar {
-    width: 10px;
+
+    width: 7px;
 }
 
-
-/* Fundo da barra */
 
 .lista-tarefas::-webkit-scrollbar-track {
-    background: var(--fundo-barra);
 
-    border-radius: 8px;
+    background:
+        rgba(150, 180, 195, 0.20);
+
+    border-radius: 10px;
 }
 
-
-/* Parte que pode ser arrastada */
 
 .lista-tarefas::-webkit-scrollbar-thumb {
-    background: var(--cor-barra);
 
-    border-radius: 8px;
+    background:
+        #72abc2;
 
-    border: 2px solid var(--fundo-barra);
+    border-radius: 10px;
 }
 
 
-/* =========================================
-   HOVER DA BARRA
-========================================= */
 
-.lista-tarefas::-webkit-scrollbar-thumb:hover {
-    background: #999999;
-}
+/* ========================================= */
+/* RESPONSIVIDADE - TABLET */
+/* ========================================= */
 
-
-/* =========================================
-   RESPONSIVIDADE
-========================================= */
-
-@media (max-width: 480px) {
+@media (max-width: 800px) {
 
     body {
-        padding: 15px;
+
+        align-items: flex-start;
+
+        padding:
+            25px 15px;
     }
 
 
     .cartao-aplicacao {
-        padding: 22px;
+
+        padding: 25px;
     }
 
 
     .caixa-entrada {
-        gap: 7px;
+
+        grid-template-columns:
+            1fr;
     }
 
 
+    #campo-tarefa,
+    .campo-humor,
     .botao-principal {
-        padding: 11px 10px;
+
+        height: 65px;
     }
 
 
     .cabecalho-aplicacao h1 {
-        font-size: 1.3rem;
+
+        font-size: 27px;
     }
+
+}
+
+
+
+/* ========================================= */
+/* RESPONSIVIDADE - CELULAR */
+/* ========================================= */
+
+@media (max-width: 550px) {
+
+    body {
+
+        padding:
+            15px 10px;
+    }
+
+
+    .cartao-aplicacao {
+
+        padding: 20px;
+
+        border-radius: 22px;
+    }
+
+
+    .cabecalho-aplicacao {
+
+        min-height: 80px;
+    }
+
+
+    .titulo-com-foto {
+
+        gap: 10px;
+
+        padding:
+            0 45px;
+    }
+
+
+    .moldura-foto {
+
+        width: 65px;
+
+        height: 65px;
+
+        border-radius: 14px;
+    }
+
+
+    .foto-perolas {
+
+        width: 55px;
+
+        height: 55px;
+
+        border-radius: 10px;
+    }
+
+
+    .cabecalho-aplicacao h1 {
+
+        font-size: 22px;
+    }
+
+
+    .botao-icone {
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 16px;
+    }
+
+
+    .item-tarefa {
+
+        padding:
+            10px;
+    }
+
+
+    .emoji-tarefa {
+
+        width: 34px;
+
+        height: 34px;
+
+        font-size: 17px;
+    }
+
+
+    .texto-tarefa {
+
+        font-size: 14px;
+    }
+
 }

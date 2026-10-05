@@ -1,20 +1,38 @@
+
 // =========================================
 // PEGAR ELEMENTOS DO HTML
 // =========================================
 
-const campoTarefa = document.getElementById("campo-tarefa");
+const campoTarefa =
+    document.getElementById("campo-tarefa");
 
-const botaoAdicionar = document.getElementById("botao-adicionar");
+const botaoAdicionar =
+    document.getElementById("botao-adicionar");
 
-const listaTarefas = document.getElementById("lista-tarefas");
+const listaTarefas =
+    document.getElementById("lista-tarefas");
 
-const contadorTarefas = document.getElementById("contador-tarefas");
+const contadorTarefas =
+    document.getElementById("contador-tarefas");
 
-const botaoAlterarTema = document.getElementById("botao-alterar-tema");
+const botaoAlterarTema =
+    document.getElementById("botao-alterar-tema");
+
+const humorTarefa =
+    document.getElementById("humor-tarefa");
+
+const mensagemMare =
+    document.getElementById("mensagem-mare");
+
+const progressoMare =
+    document.getElementById("progresso-mare");
+
+const numeroPendentes =
+    document.getElementById("numero-pendentes");
 
 
 // =========================================
-// CARREGAR TAREFAS SALVAS
+// CARREGAR TAREFAS
 // =========================================
 
 let tarefas = JSON.parse(
@@ -30,20 +48,53 @@ function mostrarTarefas() {
 
     listaTarefas.innerHTML = "";
 
+
     tarefas.forEach((tarefa, indice) => {
 
         const item = document.createElement("li");
 
         item.classList.add("item-tarefa");
 
+
         if (tarefa.concluida) {
+
             item.classList.add("concluida");
+
         }
 
+
+        // Compatibilidade com tarefas antigas
+
+        const clima =
+            tarefa.clima || "Tranquilo";
+
+        const emoji =
+            tarefa.humor || "🌊";
+
+
         item.innerHTML = `
-            <span class="texto-tarefa">
-                ${tarefa.nome}
-            </span>
+
+            <div class="informacoes-tarefa">
+
+                <span class="emoji-tarefa">
+                    ${emoji}
+                </span>
+
+
+                <div class="texto-tarefa-area">
+
+                    <span class="texto-tarefa">
+                        ${tarefa.nome}
+                    </span>
+
+                    <span class="clima-tarefa">
+                        ${clima}
+                    </span>
+
+                </div>
+
+            </div>
+
 
             <div class="acoes-tarefa">
 
@@ -56,6 +107,7 @@ function mostrarTarefas() {
 
                 </button>
 
+
                 <button
                     class="botao-excluir"
                     onclick="excluirTarefa(${indice})"
@@ -66,14 +118,21 @@ function mostrarTarefas() {
                 </button>
 
             </div>
+
         `;
 
+
         listaTarefas.appendChild(item);
+
     });
+
 
     atualizarContador();
 
+    atualizarMare();
+
     salvarTarefas();
+
 }
 
 
@@ -83,25 +142,62 @@ function mostrarTarefas() {
 
 function adicionarTarefa() {
 
-    const texto = campoTarefa.value.trim();
+    const texto =
+        campoTarefa.value.trim();
+
 
     if (texto === "") {
 
-        alert("Digite uma tarefa antes de adicionar.");
+        alert(
+            "Digite uma tarefa antes de adicionar."
+        );
 
         return;
+
     }
 
+
+    // Separar emoji e descrição do humor
+
+    const dadosHumor =
+        humorTarefa.value.split("|");
+
+
+    const emoji =
+        dadosHumor[0];
+
+    const clima =
+        dadosHumor[1];
+
+
     tarefas.push({
+
         nome: texto,
-        concluida: false
+
+        concluida: false,
+
+        humor: emoji,
+
+        clima: clima
+
     });
 
+
+    // Limpar campo
+
     campoTarefa.value = "";
+
+
+    // Voltar para a primeira opção
+
+    humorTarefa.value =
+        "☀️|Cheio de energia";
+
 
     mostrarTarefas();
 
     campoTarefa.focus();
+
 }
 
 
@@ -114,7 +210,9 @@ function concluirTarefa(indice) {
     tarefas[indice].concluida =
         !tarefas[indice].concluida;
 
+
     mostrarTarefas();
+
 }
 
 
@@ -127,6 +225,7 @@ function excluirTarefa(indice) {
     tarefas.splice(indice, 1);
 
     mostrarTarefas();
+
 }
 
 
@@ -136,10 +235,85 @@ function excluirTarefa(indice) {
 
 function atualizarContador() {
 
-    const total = tarefas.length;
+    const total =
+        tarefas.length;
+
 
     contadorTarefas.textContent =
         `${total} ${total === 1 ? "tarefa" : "tarefas"} na lista`;
+
+}
+
+
+// =========================================
+// ATUALIZAR NÍVEL DA MARÉ
+// =========================================
+
+function atualizarMare() {
+
+    const tarefasPendentes =
+        tarefas.filter(
+            tarefa => !tarefa.concluida
+        ).length;
+
+
+    numeroPendentes.textContent =
+        `${tarefasPendentes} ${
+            tarefasPendentes === 1
+                ? "pendente"
+                : "pendentes"
+        }`;
+
+
+    // Nenhuma tarefa pendente
+
+    if (tarefasPendentes === 0) {
+
+        progressoMare.style.width = "0%";
+
+        mensagemMare.textContent =
+            "🏖️ Praia tranquila! Tudo em dia!";
+
+        return;
+
+    }
+
+
+    // De 1 até 3 tarefas
+
+    if (tarefasPendentes <= 3) {
+
+        progressoMare.style.width = "30%";
+
+        mensagemMare.textContent =
+            "🌊 Maré baixa — está tudo sob controle!";
+
+        return;
+
+    }
+
+
+    // De 4 até 5 tarefas
+
+    if (tarefasPendentes <= 5) {
+
+        progressoMare.style.width = "60%";
+
+        mensagemMare.textContent =
+            "🌊🌊 Maré subindo — hora de começar!";
+
+        return;
+
+    }
+
+
+    // 6 ou mais tarefas
+
+    progressoMare.style.width = "100%";
+
+    mensagemMare.textContent =
+        "🌊🌊🌊 Maré alta — vamos organizar antes da tempestade!";
+
 }
 
 
@@ -153,6 +327,7 @@ function salvarTarefas() {
         "tarefas",
         JSON.stringify(tarefas)
     );
+
 }
 
 
@@ -162,16 +337,22 @@ function salvarTarefas() {
 
 function alterarTema() {
 
-    document.body.classList.toggle("modo-escuro");
+    document.body.classList.toggle(
+        "modo-escuro"
+    );
+
 
     const modoEscuro =
-        document.body.classList.contains("modo-escuro");
+        document.body.classList.contains(
+            "modo-escuro"
+        );
 
 
     if (modoEscuro) {
 
         botaoAlterarTema.innerHTML =
             '<i class="fa-solid fa-sun"></i>';
+
 
         localStorage.setItem(
             "tema",
@@ -183,16 +364,19 @@ function alterarTema() {
         botaoAlterarTema.innerHTML =
             '<i class="fa-solid fa-moon"></i>';
 
+
         localStorage.setItem(
             "tema",
             "claro"
         );
+
     }
+
 }
 
 
 // =========================================
-// CARREGAR TEMA SALVO
+// CARREGAR TEMA
 // =========================================
 
 function carregarTema() {
@@ -207,6 +391,7 @@ function carregarTema() {
             "modo-escuro"
         );
 
+
         botaoAlterarTema.innerHTML =
             '<i class="fa-solid fa-sun"></i>';
 
@@ -214,7 +399,9 @@ function carregarTema() {
 
         botaoAlterarTema.innerHTML =
             '<i class="fa-solid fa-moon"></i>';
+
     }
+
 }
 
 
@@ -249,15 +436,18 @@ campoTarefa.addEventListener(
         if (evento.key === "Enter") {
 
             adicionarTarefa();
+
         }
+
     }
 );
 
 
 // =========================================
-// INICIAR
+// INICIAR A APLICAÇÃO
 // =========================================
+
+carregarTema();
 
 mostrarTarefas();
 
-carregarTema();

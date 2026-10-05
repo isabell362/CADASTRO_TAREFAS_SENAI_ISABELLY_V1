@@ -1,66 +1,271 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Meu painel de tarefas</title>
 
+
+    <!-- CSS -->
+
     <link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- FONT AWESOME -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
 </head>
+
 
 <body>
 
+
+    <!-- ================================= -->
+    <!-- CARD PRINCIPAL -->
+    <!-- ================================= -->
+
     <div class="cartao-aplicacao">
+
+
+        <!-- ================================= -->
+        <!-- CABEÇALHO -->
+        <!-- ================================= -->
 
         <header class="cabecalho-aplicacao">
 
-            <h1>Minhas Tarefas ✨</h1>
 
-            <button class="botao-icone" id="botao-alterar-tema">
+            <!-- FOTO + TÍTULO -->
+
+            <div class="titulo-com-foto">
+
+
+                <!-- FOTO -->
+
+                <div class="moldura-foto">
+
+                    <img
+                        src="belle.jpg"
+                        alt="Minha foto"
+                        class="foto-perolas"
+                    >
+
+                </div>
+
+
+                <!-- TÍTULO -->
+
+                <h1>
+                    Minhas Tarefas ✨
+                </h1>
+
+
+            </div>
+
+
+            <!-- BOTÃO DO TEMA -->
+
+            <button
+                class="botao-icone"
+                id="botao-alterar-tema"
+                title="Alterar tema"
+            >
+
                 <i class="fa-solid fa-moon"></i>
+
             </button>
+
 
         </header>
 
 
+
+        <!-- ================================= -->
+        <!-- ÁREA PARA ADICIONAR TAREFA -->
+        <!-- ================================= -->
+
         <div class="caixa-entrada">
+
+
+            <!-- CAMPO DA TAREFA -->
 
             <input
                 type="text"
-                name=""
                 id="campo-tarefa"
                 placeholder="O que vamos fazer hoje?.."
                 maxlength="40"
             >
 
-            <button class="botao-principal" id="botao-adicionar">
+
+
+            <!-- COMO VOCÊ ESTÁ -->
+
+            <div class="campo-humor">
+
+
+                <div class="quadrinho-como-esta">
+
+                    <span>
+                        🏖️ Como você está?
+                    </span>
+
+                </div>
+
+
+                <select id="humor-tarefa">
+
+
+                    <option value="☀️|Cheio de energia">
+                        ☀️ Energia
+                    </option>
+
+
+                    <option value="🌊|Tranquilo">
+                        🌊 Tranquilo
+                    </option>
+
+
+                    <option value="🐚|Calminho">
+                        🐚 Calmo
+                    </option>
+
+
+                    <option value="🏄|Animado">
+                        🏄 Animado
+                    </option>
+
+
+                    <option value="🌙|Pouca energia">
+                        🌙 Cansado
+                    </option>
+
+
+                </select>
+
+
+            </div>
+
+
+
+            <!-- BOTÃO ADICIONAR -->
+
+            <button
+                class="botao-principal"
+                id="botao-adicionar"
+            >
+
                 <i class="fa-solid fa-plus"></i>
+
                 Adicionar
+
             </button>
+
 
         </div>
 
 
-        <ul class="lista-tarefas" id="lista-tarefas">
-            <!-- As tarefas serão inseridas dinamicamente via JavaScript -->
+
+        <!-- ================================= -->
+        <!-- NÍVEL DA MARÉ -->
+        <!-- ================================= -->
+
+        <div class="painel-mare">
+
+
+            <div class="titulo-mare">
+
+
+                <span>
+                    🌊 Nível da Maré
+                </span>
+
+
+                <span id="numero-pendentes">
+                    0 pendentes
+                </span>
+
+
+            </div>
+
+
+
+            <!-- BARRA -->
+
+            <div class="barra-mare">
+
+
+                <div
+                    class="progresso-mare"
+                    id="progresso-mare"
+                >
+                </div>
+
+
+            </div>
+
+
+
+            <!-- MENSAGEM -->
+
+            <p
+                class="mensagem-mare"
+                id="mensagem-mare"
+            >
+
+                🏖️ Praia tranquila! Tudo em dia!
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- ================================= -->
+        <!-- LISTA DE TAREFAS -->
+        <!-- ================================= -->
+
+        <ul
+            class="lista-tarefas"
+            id="lista-tarefas"
+        >
         </ul>
 
 
+
+        <!-- ================================= -->
+        <!-- RODAPÉ -->
+        <!-- ================================= -->
+
         <footer class="rodape-aplicacao">
 
+
             <span id="contador-tarefas">
+
                 0 tarefas na lista
+
             </span>
 
+
         </footer>
+
 
     </div>
 
 
+
+    <!-- JAVASCRIPT -->
+
     <script src="script.js"></script>
 
+
 </body>
+
 </html>

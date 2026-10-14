@@ -1250,6 +1250,251 @@ body.modo-escuro
     .texto-tarefa {
 
         font-size: 14px;
+    
     }
 
+/* BOTÃO DE AJUDA */
+.cartao-aplicacao {
+    position: relative;
+}
+
+.botao-ajuda {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #76b9ce;
+    color: white;
+    font-size: 21px;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.2s;
+}
+
+.botao-ajuda:hover {
+    background: #438fb0;
+    transform: scale(1.08);
+}
+
+/* BALÃO DE FUNCIONALIDADES */
+.balao-ajuda {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    width: min(330px, calc(100% - 30px));
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 22px 18px;
+    background: #fffdf8;
+    color: #34566a;
+    border: 2px solid #c5e5eb;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+    z-index: 20;
+}
+
+.balao-ajuda[hidden] {
+    display: none;
+}
+
+.balao-ajuda h3 {
+    margin: 0 25px 16px 0;
+    font-size: 17px;
+    color: #367e99;
+}
+
+.balao-ajuda p {
+    margin: 0 0 13px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.balao-ajuda p strong {
+    color: #367e99;
+}
+
+.fechar-ajuda {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    color: #64818d;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.rodape-ajuda {
+    padding-top: 12px;
+    border-top: 1px solid #d9e9eb;
+    text-align: center;
+}
+
+/* BALÃO NO MODO ESCURO */
+body.modo-escuro .balao-ajuda {
+    background: #183746;
+    color: #e5f5f8;
+    border-color: #426b7a;
+}
+
+body.modo-escuro .balao-ajuda h3,
+body.modo-escuro .balao-ajuda p strong {
+    color: #9cdeec;
+}
+
+body.modo-escuro .fechar-ajuda {
+    color: #e5f5f8;
+}
+
+}
+
+
+/* =========================================
+   BOTÃO DE AJUDA — VISUAL DEFINITIVO
+========================================= */
+
+.cabecalho-aplicacao .botao-ajuda {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    transform: translateY(-50%);
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #75b9d0, #568eaa);
+    color: #fff4d6;
+
+    font-size: 21px;
+    cursor: pointer;
+
+    box-shadow: 0 5px 13px rgba(50, 100, 120, 0.23);
+    transition: background 0.2s, box-shadow 0.2s;
+    z-index: 110;
+}
+
+.cabecalho-aplicacao .botao-ajuda:hover {
+    background: linear-gradient(135deg, #64aac2, #4e829e);
+    box-shadow: 0 7px 16px rgba(50, 100, 120, 0.28);
+}
+
+.cabecalho-aplicacao .botao-ajuda:focus-visible,
+.fechar-ajuda:focus-visible {
+    outline: 3px solid #f0c875;
+    outline-offset: 3px;
+}
+
+/* Painel de ajuda */
+
+.balao-ajuda {
+    position: absolute;
+    top: calc(50% + 35px);
+    right: 12px;
+
+    width: min(440px, calc(100% - 24px));
+    max-height: min(75vh, 620px);
+    overflow-y: auto;
+
+    box-sizing: border-box;
+    padding: 22px;
+
+    border: 1px solid #d4e7ed;
+    border-radius: 24px;
+
+    background: #fafdff;
+    color: #405d70;
+
+    box-shadow: 0 18px 50px rgba(37, 82, 103, 0.22);
+    z-index: 120;
+
+    animation: abrirAjuda 0.22s ease-out;
+}
+
+.balao-ajuda[hidden] {
+    display: none !important;
+}
+
+@keyframes abrirAjuda {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modo escuro */
+
+body.modo-escuro .balao-ajuda {
+    background: #1d2b34;
+    color: #edf5f8;
+    border-color: #425c68;
+}
+
+body.modo-escuro .ajuda-cabecalho h3,
+body.modo-escuro .ajuda-item h4 {
+    color: #b6e4f0;
+}
+
+body.modo-escuro .ajuda-cabecalho p,
+body.modo-escuro .ajuda-item p,
+body.modo-escuro .ajuda-rodape {
+    color: #b0c5ce;
+}
+
+body.modo-escuro .ajuda-item {
+    background: #263842;
+    border-color: #3a505b;
+}
+
+body.modo-escuro .fechar-ajuda {
+    background: #344b56;
+    color: #e9f6fa;
+}
+
+body.modo-escuro .ajuda-rodape {
+    border-top-color: #3a505b;
+}
+
+/* Celulares */
+
+@media (max-width: 550px) {
+    .cabecalho-aplicacao .botao-ajuda {
+        top: 0;
+        right: 0;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+        transform: none;
+    }
+
+    .balao-ajuda {
+        top: 48px;
+        right: 0;
+        width: 100%;
+        max-height: 72vh;
+        padding: 17px;
+    }
+
+    .ajuda-lista {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .ajuda-item-largo {
+        grid-column: auto;
+    }
 }

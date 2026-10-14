@@ -451,3 +451,56 @@ carregarTema();
 
 mostrarTarefas();
 
+
+
+// =========================================
+// BOTÃO DE AJUDA
+// =========================================
+
+const botaoAjuda = document.getElementById("botao-ajuda");
+const balaoAjuda = document.getElementById("balao-ajuda");
+const fecharAjuda = document.getElementById("fechar-ajuda");
+
+// Abrir e fechar o painel de ajuda
+if (botaoAjuda && balaoAjuda && fecharAjuda) {
+
+    botaoAjuda.addEventListener("click", function () {
+
+        balaoAjuda.hidden = !balaoAjuda.hidden;
+
+        botaoAjuda.setAttribute(
+            "aria-expanded",
+            String(!balaoAjuda.hidden)
+        );
+
+    });
+
+    // Fechar pelo botão X
+    fecharAjuda.addEventListener("click", function () {
+
+        balaoAjuda.hidden = true;
+
+        botaoAjuda.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    });
+
+    // Fechar ao apertar Esc
+    document.addEventListener("keydown", function (evento) {
+
+        if (evento.key === "Escape" && !balaoAjuda.hidden) {
+
+            balaoAjuda.hidden = true;
+
+            botaoAjuda.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    });
+
+}

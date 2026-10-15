@@ -7,13 +7,11 @@
 
     <title>Minhas Tarefas ✨</title>
 
-    <!-- Ícones -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     >
 
-    <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -28,7 +26,7 @@
                 <div class="moldura-foto">
                     <img
                         src="belle.jpg"
-                        alt="Imagem decorativa do painel"
+                        alt="Foto decorativa"
                         class="foto-perolas"
                     >
                 </div>
@@ -36,7 +34,6 @@
                 <h1>Minhas Tarefas ✨</h1>
             </div>
 
-            <!-- BOTÃO DE TEMA -->
             <button
                 id="botao-alterar-tema"
                 class="botao-icone"
@@ -47,7 +44,6 @@
                 <i class="fa-solid fa-moon"></i>
             </button>
 
-            <!-- BOTÃO DE AJUDA -->
             <button
                 id="botao-ajuda"
                 class="botao-ajuda"
@@ -79,7 +75,6 @@
 
                         <div>
                             <h3 id="titulo-ajuda">Guia da sua praia</h3>
-
                             <p id="descricao-ajuda">
                                 Descubra como usar cada função!
                             </p>
@@ -98,21 +93,15 @@
 
                 </div>
 
-                <!-- FUNCIONALIDADES -->
                 <div class="ajuda-lista">
 
                     <article class="ajuda-item">
                         <span class="ajuda-item-icone icone-adicionar">
                             <i class="fa-solid fa-plus"></i>
                         </span>
-
                         <div>
                             <h4>Adicionar tarefas</h4>
-                            <p>
-                                Escreva o que precisa fazer e clique no
-                                botão de adicionar. Você também pode
-                                pressionar Enter.
-                            </p>
+                            <p>Escreva sua tarefa e clique em Adicionar ou pressione Enter.</p>
                         </div>
                     </article>
 
@@ -120,13 +109,9 @@
                         <span class="ajuda-item-icone icone-humor">
                             <i class="fa-solid fa-face-smile"></i>
                         </span>
-
                         <div>
                             <h4>Seu humor</h4>
-                            <p>
-                                Escolha como está se sentindo e acompanhe
-                                sua rotina de acordo com seu humor.
-                            </p>
+                            <p>Escolha como está se sentindo e acompanhe sua rotina.</p>
                         </div>
                     </article>
 
@@ -134,13 +119,9 @@
                         <span class="ajuda-item-icone icone-concluir">
                             <i class="fa-solid fa-check"></i>
                         </span>
-
                         <div>
                             <h4>Concluir tarefas</h4>
-                            <p>
-                                Marque uma tarefa como concluída quando
-                                terminar. Assim, você acompanha seu progresso.
-                            </p>
+                            <p>Marque uma tarefa como concluída quando terminar.</p>
                         </div>
                     </article>
 
@@ -148,13 +129,9 @@
                         <span class="ajuda-item-icone icone-excluir">
                             <i class="fa-solid fa-trash"></i>
                         </span>
-
                         <div>
                             <h4>Excluir tarefas</h4>
-                            <p>
-                                Use o botão de lixeira da tarefa para
-                                removê-la da sua lista.
-                            </p>
+                            <p>Use o botão de lixeira para remover uma tarefa.</p>
                         </div>
                     </article>
 
@@ -162,13 +139,9 @@
                         <span class="ajuda-item-icone icone-mare">
                             <i class="fa-solid fa-water"></i>
                         </span>
-
                         <div>
                             <h4>Maré de progresso</h4>
-                            <p>
-                                Acompanhe a barra de progresso enquanto
-                                conclui suas tarefas.
-                            </p>
+                            <p>Acompanhe seu progresso ao concluir as tarefas.</p>
                         </div>
                     </article>
 
@@ -176,13 +149,9 @@
                         <span class="ajuda-item-icone icone-tema">
                             <i class="fa-solid fa-moon"></i>
                         </span>
-
                         <div>
                             <h4>Modo claro e escuro</h4>
-                            <p>
-                                Clique no botão de lua ou tema para
-                                alternar entre os modos disponíveis.
-                            </p>
+                            <p>Clique no botão de lua para alternar o tema.</p>
                         </div>
                     </article>
 
@@ -190,13 +159,9 @@
                         <span class="ajuda-item-icone icone-salvar">
                             <i class="fa-solid fa-cloud-arrow-down"></i>
                         </span>
-
                         <div>
                             <h4>Salvamento automático</h4>
-                            <p>
-                                Suas tarefas são salvas no navegador
-                                automaticamente para você continuar depois.
-                            </p>
+                            <p>As tarefas podem ficar salvas no navegador automaticamente.</p>
                         </div>
                     </article>
 
@@ -204,79 +169,69 @@
 
                 <div class="ajuda-rodape">
                     <i class="fa-solid fa-shell"></i>
-                    <span>
-                        Um passo de cada vez. Você consegue!
-                    </span>
+                    <span>Um passo de cada vez. Você consegue!</span>
                 </div>
 
             </div>
 
         </header>
 
-        <!-- ENTRADA DE TAREFAS -->
+        <!-- ENTRADA E HUMOR -->
         <section class="caixa-entrada" aria-label="Adicionar tarefa">
 
-            <label for="campo-tarefa">
-                O que vamos fazer hoje?
-            </label>
+            <input
+                type="text"
+                id="campo-tarefa"
+                maxlength="40"
+                placeholder="O que vamos fazer hoje?.."
+                autocomplete="off"
+                aria-label="Digite uma nova tarefa"
+            >
 
-            <div class="entrada-tarefa">
+            <div class="campo-humor">
 
-                <input
-                    type="text"
-                    id="campo-tarefa"
-                    maxlength="40"
-                    placeholder="O que vamos fazer hoje?.."
-                    autocomplete="off"
-                    aria-label="Digite uma nova tarefa"
-                >
+                <label class="quadrinho-como-esta" for="humor-tarefa">
+                    🏖️ Como você está?
+                </label>
 
-                <button
-                    type="button"
-                    id="botao-adicionar"
-                    class="botao-principal"
-                    aria-label="Adicionar tarefa"
-                    title="Adicionar tarefa"
-                >
-                    <i class="fa-solid fa-plus"></i>
-                    <span>Adicionar</span>
-                </button>
+                <select id="humor-tarefa">
+                    <option value="">Escolha seu humor</option>
+                    <option value="feliz">😊 Feliz</option>
+                    <option value="animada">🌞 Animada</option>
+                    <option value="tranquila">🌊 Tranquila</option>
+                    <option value="cansada">😴 Cansada</option>
+                    <option value="ansiosa">🌥️ Ansiosa</option>
+                    <option value="desanimada">☁️ Desanimada</option>
+                </select>
 
             </div>
 
-        </section>
-
-        <!-- HUMOR -->
-        <section class="painel-humor" aria-label="Como você está">
-
-            <label for="humor-tarefa">
-                🏖️ Como você está?
-            </label>
-
-            <select id="humor-tarefa">
-                <option value="">Escolha seu humor</option>
-                <option value="feliz">😊 Feliz</option>
-                <option value="animada">🌞 Animada</option>
-                <option value="tranquila">🌊 Tranquila</option>
-                <option value="cansada">😴 Cansada</option>
-                <option value="ansiosa">🌥️ Ansiosa</option>
-                <option value="desanimada">☁️ Desanimada</option>
-            </select>
-
-            <p id="mensagem-mare" aria-live="polite">
-                Cada dia tem sua própria maré. Vá no seu ritmo!
-            </p>
+            <button
+                type="button"
+                id="botao-adicionar"
+                class="botao-principal"
+                aria-label="Adicionar tarefa"
+                title="Adicionar tarefa"
+            >
+                <i class="fa-solid fa-plus"></i>
+                <span>Adicionar</span>
+            </button>
 
         </section>
+
+        <!-- MENSAGEM DO HUMOR -->
+        <p id="mensagem-mare" class="mensagem-mare" aria-live="polite">
+            🏖️ Praia tranquila! Tudo em dia!
+        </p>
 
         <!-- PROGRESSO -->
         <section class="painel-mare" aria-label="Progresso das tarefas">
 
-            <div class="cabecalho-mare">
-                <h2>
+            <div class="titulo-mare">
+                <span>
                     <i class="fa-solid fa-water"></i>
                     Sua maré de progresso
-                </h2>
+                </span>
 
                 <span>
                     <span id="numero-pendentes">0</span>
@@ -285,17 +240,14 @@
             </div>
 
             <div
-                class="trilho-mare"
+                class="barra-mare"
                 role="progressbar"
                 aria-label="Progresso das tarefas concluídas"
                 aria-valuemin="0"
                 aria-valuemax="100"
                 aria-valuenow="0"
             >
-                <div
-                    id="progresso-mare"
-                    class="progresso-mare"
-                ></div>
+                <div id="progresso-mare" class="progresso-mare"></div>
             </div>
 
         </section>
@@ -309,9 +261,7 @@
                     Minhas tarefas
                 </h2>
 
-                <span id="contador-tarefas">
-                    0 tarefas
-                </span>
+                <span id="contador-tarefas">0 tarefas na lista</span>
             </div>
 
             <ul id="lista-tarefas" class="lista-tarefas"></ul>
@@ -328,7 +278,6 @@
 
     </main>
 
-    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
